@@ -1,0 +1,59 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    //test
+    testCompile 'junit:junit:4.12'
+
+    //android
+    compile "com.android.support:appcompat-v7:$support_version"
+
+    //google
+    compile "com.google.code.gson:gson:2.4"
+
+    //kotlin
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    //anko
+    compile "org.jetbrains.anko:anko-common:$anko_version"
+    compile "org.jetbrains.anko:anko-sqlite:$anko_version"
+
+    //stetho
+    compile 'com.facebook.stetho:stetho:1.3.0'
+
+    compile project(path: ':domain')
+}
+buildscript {
+    ext.kotlin_version = '1.0.0'
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+repositories {
+    mavenCentral()
+}
