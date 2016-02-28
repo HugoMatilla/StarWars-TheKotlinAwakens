@@ -4,6 +4,7 @@ apply plugin: 'kotlin'
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compile 'com.mauriciotogneri:trail:1.0.0'
 }
 buildscript {
     ext.kotlin_version = '1.0.0'
@@ -12,6 +13,7 @@ buildscript {
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
     }
 }
 repositories {

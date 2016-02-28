@@ -29,20 +29,7 @@ class ArticlesListAdapter(val articlesList: Collection<ArticleDomain>, val itemC
     class ViewHolder(view: View, val itemClick: (ArticleDomain) -> Unit) : RecyclerView.ViewHolder(view) {
         fun bindArticle(article: ArticleDomain) {
             with(article) {
-                //                com.squareup.picasso.Picasso.with(itemView.ctx).load(thumbnail).into(itemView.articleListImageView)
                 Glide.with(itemView.ctx).load(thumbnail).crossFade()
-                        //                        .listener(object : RequestListener<String, GlideDrawable> {
-                        //                            override fun onResourceReady(p0: GlideDrawable?, p1: String?, p2: Target<GlideDrawable>?, p3: Boolean, p4: Boolean): Boolean {
-                        //                                Log.d(javaClass.canonicalName, "Glide: " + p1)
-                        //                                Glide.with(itemView.ctx).load(thumbnailFull).crossFade().into(itemView.articleListImageView)
-                        //                                return true
-                        //                            }
-                        //
-                        //                            override fun onException(p0: Exception?, p1: String?, p2: Target<GlideDrawable>?, p3: Boolean): Boolean {
-                        //                                throw UnsupportedOperationException()
-                        //                            }
-                        //
-                        //                        })
                         .into(itemView.articleListImageView)
                 itemView.articleListNameView.text = title
                 itemView.setOnClickListener { itemClick(this) }

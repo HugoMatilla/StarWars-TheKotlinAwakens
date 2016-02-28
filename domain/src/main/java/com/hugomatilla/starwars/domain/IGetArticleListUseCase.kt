@@ -5,6 +5,10 @@ package com.hugomatilla.starwars.domain
  */
 
 interface IGetArticleListUseCase {
+    interface Callback {
+        fun onListLoaded(articles: Collection<ArticleDomain>?)
+        fun onError(error: String)
+    }
 
-    fun execute(): Collection<ArticleDomain>?
+    fun execute(callback: Callback)
 }
