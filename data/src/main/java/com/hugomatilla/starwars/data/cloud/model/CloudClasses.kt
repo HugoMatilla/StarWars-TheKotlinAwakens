@@ -1,4 +1,4 @@
-package com.hugomatilla.starwars.data.cloud
+package com.hugomatilla.starwars.data.cloud.model
 
 /**
  * Created by hugomatilla on 27/02/16.

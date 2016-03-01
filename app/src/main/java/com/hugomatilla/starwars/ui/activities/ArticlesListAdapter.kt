@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.hugomatilla.starwars.R
-import com.hugomatilla.starwars.domain.ArticleDomain
+import com.hugomatilla.starwars.domain.model.ArticleDomain
 import kotlinx.android.synthetic.main.article_list_item.view.*
 
 /**
@@ -29,8 +29,7 @@ class ArticlesListAdapter(val articlesList: Collection<ArticleDomain>, val itemC
     class ViewHolder(view: View, val itemClick: (ArticleDomain) -> Unit) : RecyclerView.ViewHolder(view) {
         fun bindArticle(article: ArticleDomain) {
             with(article) {
-                Glide.with(itemView.ctx).load(thumbnail).crossFade()
-                        .into(itemView.articleListImageView)
+                Glide.with(itemView.ctx).load(thumbnail).crossFade().into(itemView.articleListImageView)
                 itemView.articleListNameView.text = title
                 itemView.setOnClickListener { itemClick(this) }
             }

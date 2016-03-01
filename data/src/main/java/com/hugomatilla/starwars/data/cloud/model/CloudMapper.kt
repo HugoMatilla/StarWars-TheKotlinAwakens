@@ -1,8 +1,6 @@
 package com.hugomatilla.starwars.data.cloud.model
 
-import com.hugomatilla.starwars.data.cloud.ArticleCloud
-import com.hugomatilla.starwars.data.cloud.ArticleListCloud
-import com.hugomatilla.starwars.domain.ArticleDomain
+import com.hugomatilla.starwars.domain.model.ArticleDomain
 
 /**
  * Created by hugomatilla on 27/02/16.
@@ -19,9 +17,9 @@ class CloudMapper {
 
     private fun articleToDomain(article: ArticleCloud): ArticleDomain {
         return with(article) {
-            val thumbnailAux = thumbnail ?: PLACE_HOLDER
-            val thumbnailFull = thumbnailAux.replace("width/100", "width/500")
-            ArticleDomain(id, title, abstract, thumbnailAux, thumbnailFull, original_dimensions?.width, original_dimensions?.height, url, type)
+            val thumbnailOrig = thumbnail ?: PLACE_HOLDER
+            val thumbnailFull = thumbnailOrig.replace("width/100", "width/500")
+            ArticleDomain(id, title, abstract, thumbnailOrig, thumbnailFull, original_dimensions?.width, original_dimensions?.height, url, type)
         }
     }
 }
