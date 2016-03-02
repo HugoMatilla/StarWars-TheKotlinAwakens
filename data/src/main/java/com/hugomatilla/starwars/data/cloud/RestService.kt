@@ -14,18 +14,20 @@ import com.hugomatilla.starwars.domain.articles.GetArticlesResult
 import java.net.MalformedURLException
 import java.net.URL
 
-class Request(val cloudMapper: CloudMapper = CloudMapper(),
-              val gson: Gson = Gson()) {
+class RestService(val cloudMapper: CloudMapper = CloudMapper(),
+                  val gson: Gson = Gson()) {
 
     object Uris {
-        private val baseUrl = "htp://starwars.wikia.com/api/v1/"
-        val topArticles = baseUrl + "Articles/Top?expand=1&abstract=50&width=300&height=300"
-        val articleDetail = baseUrl + "Articles/AsSimpleJson/?id=%s"
+        private val baseUrl = "http://starwars.wikia.com/api/v1/"
+        val topArticles = "Articles/Top?expand=1&abstract=50&width=300&height=300"
+        val topArticlesUrl = baseUrl + topArticles
+        val articleDetail = "Articles/AsSimpleJson/?id=%s"
+        val articleDetailUrl = baseUrl + articleDetail
     }
 
-    fun fetchArticlesList(): GetArticlesResult {
+    fun fetchArticlesList(url: String = Uris.topArticlesUrl): GetArticlesResult {
         try {
-            val jsonStr = URL(Uris.topArticles).readText()
+            val jsonStr = URL(url).readText()
             val articleList = gson.fromJson(jsonStr, ArticleListCloud::class.java)
             val result = cloudMapper.articleListToDomain(articleList)
             return GetArticlesResult(result)

@@ -9,7 +9,7 @@ import com.hugomatilla.starwars.domain.articles.GetArticlesResult
 
 class Cloud : IDataSource {
     override fun getArticleList(): GetArticlesResult {
-        return Request().fetchArticlesList()
+        return RestService().fetchArticlesList()
     }
 
 }
