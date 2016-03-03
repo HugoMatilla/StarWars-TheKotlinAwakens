@@ -9,11 +9,11 @@ import com.hugomatilla.starwars.data.ArticlesListRepository
 import com.hugomatilla.starwars.domain.articles.GetArticlesListUseCase
 import com.hugomatilla.starwars.domain.articles.IGetArticlesListUseCase
 import com.hugomatilla.starwars.domain.exception.ErrorBundle
-import com.hugomatilla.starwars.domain.model.ArticleDomain
+import com.hugomatilla.starwars.domain.model.ArticleDetailDomain
 import kotlinx.android.synthetic.main.articles_list_activity.*
 import org.jetbrains.anko.alert
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
-import java.util.concurrent.Executors
 
 class ArticlesListActivity : AppCompatActivity() {
 
@@ -27,24 +27,26 @@ class ArticlesListActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        val threadPool = Executors.newFixedThreadPool(5)
-        val articleRepository = ArticlesListRepository
-        GetArticlesListUseCase(articleRepository, threadPool).execute(object : IGetArticlesListUseCase.Callback {
-            override fun onListLoaded(articles: Collection<ArticleDomain>?) {
-                inflateArticles(articles)
-                progressBar.visibility = View.GONE
-            }
+        GetArticlesListUseCase(ArticlesListRepository, JobExecutor.threadPool)
+                .execute(object : IGetArticlesListUseCase.Callback {
+                    override fun onListLoaded(articles: Collection<ArticleDetailDomain>?) {
+                        inflateArticles(articles)
+                        progressBar.visibility = View.GONE
+                    }
 
-            override fun onError(error: ErrorBundle) {
-                progressBar.visibility = View.GONE
-                alert(error.errorMessage, "Error") { positiveButton("OK") { } }.show()
-            }
-        })
+                    override fun onError(error: ErrorBundle) {
+                        progressBar.visibility = View.GONE
+                        alert(error.errorMessage, "Error") { positiveButton("OK") { } }.show()
+                    }
+                })
     }
 
-    private fun inflateArticles(articles: Collection<ArticleDomain>?) {
+    private fun inflateArticles(articles: Collection<ArticleDetailDomain>?) {
         if (articles != null)
-            listView.adapter = ArticlesListAdapter(articles, { toast(it.title) })
+            listView.adapter = ArticlesListAdapter(articles,
+                    //                    { Log.d(this.javaClass.canonicalName, it.toString()) }
+                    { startActivity<ArticleDetailActivity>(Pair(ArticleDetailActivity.ID, it.id)) }
+            )
         else
             toast("No articles to show. :)")
     }

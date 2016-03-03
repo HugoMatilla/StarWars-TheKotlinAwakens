@@ -2,16 +2,16 @@ package com.hugomatilla.starwars.domain.articles
 
 import com.hugomatilla.starwars.domain.base.IUseCase
 import com.hugomatilla.starwars.domain.exception.ErrorBundle
-import com.hugomatilla.starwars.domain.model.ArticleDetailDomain
+import com.hugomatilla.starwars.domain.model.SectionContent
 
 /**
  * Created by hugomatilla on 28/02/16.
  */
 
-interface IGetArticlesListUseCase : IUseCase<IGetArticlesListUseCase.Callback> {
+interface IGetArticleDetailUseCase : IUseCase<IGetArticleDetailUseCase.Callback> {
 
     interface Callback {
-        fun onListLoaded(articles: Collection<ArticleDetailDomain>?)
+        fun onArticleLoaded(sections: Collection<SectionContent>?)
         fun onError(error: ErrorBundle)
     }
 

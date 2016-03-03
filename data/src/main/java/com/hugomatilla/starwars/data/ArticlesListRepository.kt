@@ -1,6 +1,6 @@
 package com.hugomatilla.starwars.data
 
-import com.hugomatilla.starwars.domain.articles.GetArticlesResult
+import com.hugomatilla.starwars.domain.articles.GetArticlesListResult
 import com.hugomatilla.starwars.domain.articles.IArticlesListRepository
 
 /**
@@ -11,7 +11,7 @@ object ArticlesListRepository : IArticlesListRepository {
 
     val dataProvider: DataProvider = DataProvider()
 
-    override fun getArticleList(): GetArticlesResult {
+    override fun getArticleList(): GetArticlesListResult {
         val dataStore = dataProvider.requestSource()
         val result = dataStore.getArticleList();
         return result
