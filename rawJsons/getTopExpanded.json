@@ -1,0 +1,108 @@
+// 20160304013108
+// http://starwars.wikia.com/api/v1/Articles/Top?expand=1&limit=5
+
+{
+  "basepath": "http://starwars.wikia.com",
+  "items": [
+    {
+      "id": 466088,
+      "title": "Star Wars Rebels Season Two",
+      "ns": 0,
+      "url": "/wiki/Star_Wars_Rebels_Season_Two",
+      "revision": {
+        "id": 6224430,
+        "user": "Imperators II",
+        "user_id": 116899,
+        "timestamp": "1457007727"
+      },
+      "comments": 0,
+      "type": "article",
+      "abstract": "Star Wars Rebels Season Two Production information Attribution information Chronological...",
+      "thumbnail": "http://vignette3.wikia.nocookie.net/starwars/images/0/05/Star_Wars_Rebels_Season_Two.jpg/revision/latest/window-crop/width/200/x-offset/0/y-offset/0/window-width/1024/window-height/1024?cb=20150829164257",
+      "original_dimensions": {
+        "width": 1024,
+        "height": 1582
+      }
+    },
+    {
+      "id": 472920,
+      "title": "Kylo Ren",
+      "ns": 0,
+      "url": "/wiki/Kylo_Ren",
+      "revision": {
+        "id": 6221039,
+        "user": "Alientraveller",
+        "user_id": 733050,
+        "timestamp": "1456590359"
+      },
+      "comments": 0,
+      "type": "article",
+      "abstract": "Kylo Ren Biographical information Physical description Chronological and political information...",
+      "thumbnail": "http://vignette3.wikia.nocookie.net/starwars/images/2/2a/Kylo-Ren-Profile.png/revision/latest/window-crop/width/200/x-offset/0/y-offset/0/window-width/750/window-height/750?cb=20160106131033",
+      "original_dimensions": {
+        "width": 750,
+        "height": 900
+      }
+    },
+    {
+      "id": 531124,
+      "title": "Shroud of Darkness",
+      "ns": 0,
+      "url": "/wiki/Shroud_of_Darkness",
+      "revision": {
+        "id": 6225276,
+        "user": "Andykatib",
+        "user_id": 460415,
+        "timestamp": "1457050557"
+      },
+      "comments": 0,
+      "type": "article",
+      "abstract": "\"Shroud of Darkness\" Production information Episode chronology \"Shroud of Darkness\" is the...",
+      "thumbnail": "http://vignette4.wikia.nocookie.net/starwars/images/f/f9/Shroud_of_Darkness_thumb.png/revision/latest/window-crop/width/200/x-offset/342/y-offset/0/window-width/879/window-height/878?cb=20160303005052",
+      "original_dimensions": {
+        "width": 1560,
+        "height": 878
+      }
+    },
+    {
+      "id": 502844,
+      "title": "Snoke",
+      "ns": 0,
+      "url": "/wiki/Snoke",
+      "revision": {
+        "id": 6222665,
+        "user": "Skyriver342",
+        "user_id": 27809777,
+        "timestamp": "1456773871"
+      },
+      "comments": 0,
+      "type": "article",
+      "abstract": "Snoke Physical description Chronological and political information Snoke was a Force-sensitive...",
+      "thumbnail": "http://vignette1.wikia.nocookie.net/starwars/images/0/08/Supreme_Leader_Snoke.png/revision/latest/window-crop/width/200/x-offset/0/y-offset/0/window-width/465/window-height/465?cb=20160103063418",
+      "original_dimensions": {
+        "width": 465,
+        "height": 510
+      }
+    },
+    {
+      "id": 398122,
+      "title": "Star Wars: Episode VII The Force Awakens",
+      "ns": 0,
+      "url": "/wiki/Star_Wars:_Episode_VII_The_Force_Awakens",
+      "revision": {
+        "id": 6224773,
+        "user": "Omicron",
+        "user_id": 65418,
+        "timestamp": "1457020806"
+      },
+      "comments": 0,
+      "type": "article",
+      "abstract": "Star Wars: Episode VII The Force Awakens Attribution information Production information...",
+      "thumbnail": "http://vignette2.wikia.nocookie.net/starwars/images/f/fd/Star_Wars_Episode_VII_The_Force_Awakens.jpg/revision/latest/window-crop/width/200/x-offset/0/y-offset/0/window-width/1458/window-height/1458?cb=20151018162823",
+      "original_dimensions": {
+        "width": 1458,
+        "height": 2160
+      }
+    }
+  ]
+}
