@@ -24,7 +24,6 @@ class ArticleDetailAdapter(val sections: Collection<SectionContent>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bindSection(sections.elementAt(position))
-
     }
 
     override fun getItemCount() = sections.size
@@ -35,7 +34,7 @@ class ArticleDetailAdapter(val sections: Collection<SectionContent>) :
             with(section) {
                 Glide.with(itemView.ctx).load(section.image).crossFade().into(itemView.sectionImageView)
                 itemView.sectionTitleView.text = title
-                itemView.sectionDescriptionView.text = title
+                itemView.sectionDescriptionView.text = text
             }
         }
     }

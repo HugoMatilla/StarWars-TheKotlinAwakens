@@ -23,7 +23,7 @@ class CloudMapper {
                     title,
                     abstract,
                     thumbnail ?: PLACE_HOLDER,
-                    getFullImageUrl(thumbnail),
+                    getFullImageUrl(thumbnail ?: PLACE_HOLDER),
                     original_dimensions?.width,
                     original_dimensions?.height,
                     url,
@@ -38,7 +38,7 @@ class CloudMapper {
             SectionContent(
                     it.title,
                     it.level,
-                    it.content.joinToString("\n"),
+                    it.content.map { it.text }.joinToString("\n"),
                     it.images.firstOrNull()?.src,
                     it.images.firstOrNull()?.caption
             )

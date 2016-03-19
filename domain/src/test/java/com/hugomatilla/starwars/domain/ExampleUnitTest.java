@@ -1,4 +1,4 @@
-package com.hugomatilla.starwars.data;
+package com.hugomatilla.starwars.domain;
 
 import org.junit.Test;
 

@@ -6,8 +6,8 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import com.hugomatilla.starwars.R
 import com.hugomatilla.starwars.data.ArticlesListRepository
-import com.hugomatilla.starwars.domain.articles.GetArticlesListUseCase
-import com.hugomatilla.starwars.domain.articles.IGetArticlesListUseCase
+import com.hugomatilla.starwars.domain.articles.list.GetArticlesListUseCase
+import com.hugomatilla.starwars.domain.articles.list.IGetArticlesListUseCase
 import com.hugomatilla.starwars.domain.exception.ErrorBundle
 import com.hugomatilla.starwars.domain.model.ArticleDetailDomain
 import kotlinx.android.synthetic.main.articles_list_activity.*
@@ -22,12 +22,12 @@ class ArticlesListActivity : AppCompatActivity() {
         setContentView(R.layout.articles_list_activity)
         listView.layoutManager = LinearLayoutManager(this)
         progressBar.visibility = View.VISIBLE
+        getArticlesAndInflate()
 
     }
 
-    override fun onResume() {
-        super.onResume()
-        GetArticlesListUseCase(ArticlesListRepository, JobExecutor.threadPool)
+    private fun getArticlesAndInflate() {
+        GetArticlesListUseCase(ArticlesListRepository)
                 .execute(object : IGetArticlesListUseCase.Callback {
                     override fun onListLoaded(articles: Collection<ArticleDetailDomain>?) {
                         inflateArticles(articles)
@@ -44,8 +44,7 @@ class ArticlesListActivity : AppCompatActivity() {
     private fun inflateArticles(articles: Collection<ArticleDetailDomain>?) {
         if (articles != null)
             listView.adapter = ArticlesListAdapter(articles,
-                    //                    { Log.d(this.javaClass.canonicalName, it.toString()) }
-                    { startActivity<ArticleDetailActivity>(Pair(ArticleDetailActivity.ID, it.id)) }
+                    { startActivity<ArticleDetailActivity>(ArticleDetailActivity.ID to it.id, ArticleDetailActivity.HEADER_IMAGE to it.thumbnailFull!!) }
             )
         else
             toast("No articles to show. :)")
