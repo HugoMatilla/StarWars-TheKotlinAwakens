@@ -3,17 +3,24 @@ package com.hugomatilla.starwars.articles.detail
 import android.app.Activity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.Toolbar
 import android.view.View
 import com.hugomatilla.starwars.R
 import com.hugomatilla.starwars.domain.model.SectionDomain
+import com.hugomatilla.starwars.widgets.ToolbarManager
 import kotlinx.android.synthetic.main.article_detail_activity.*
 import org.jetbrains.anko.alert
+import org.jetbrains.anko.find
 import org.jetbrains.anko.toast
 
-class ArticleDetailActivity : Activity(), ArticleDetailPresenter.View {
+class ArticleDetailActivity : Activity(), ArticleDetailPresenter.View, ToolbarManager {
+    override val toolbar: Toolbar by lazy { find<Toolbar>(R.id.toolbar) }
+
+
     companion object {
         val ID = "ArticleDetailActivity.ID"
         val HEADER_IMAGE = "ArticleDetailActivity.HEADER_IMAGE"
+        val HEADER_TITLE = "ArticleDetailActivity.HEADER_TITLE"
     }
 
     val headerImage: String by lazy { intent.getStringExtra(HEADER_IMAGE) }
@@ -22,6 +29,9 @@ class ArticleDetailActivity : Activity(), ArticleDetailPresenter.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.article_detail_activity)
+        initToolbar()
+        toolbar.title = intent.getStringExtra(HEADER_TITLE)
+        enableHomeAsUp { onBackPressed() }
         sectionsListView.layoutManager = LinearLayoutManager(this)
         val id = intent.getIntExtra(ID, 0)
         presenter.getDetailArticle(id)

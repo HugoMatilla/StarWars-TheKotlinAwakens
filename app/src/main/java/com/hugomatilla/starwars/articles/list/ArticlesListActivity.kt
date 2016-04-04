@@ -54,7 +54,8 @@ class ArticlesListActivity : AppCompatActivity(), ArticlesListPresenter.View {
                 {
                     startActivity<ArticleDetailActivity>(
                             ArticleDetailActivity.ID to it.id,
-                            ArticleDetailActivity.HEADER_IMAGE to it.thumbnailFull!!)
+                            ArticleDetailActivity.HEADER_TITLE to it.title.orEmpty(),
+                            ArticleDetailActivity.HEADER_IMAGE to it.thumbnailFull.orEmpty())
                 })
     }
 }
