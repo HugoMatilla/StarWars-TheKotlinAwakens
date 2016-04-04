@@ -1,4 +1,4 @@
-package com.hugomatilla.starwars.ui.activities
+package com.hugomatilla.starwars.base
 
 import android.content.Context
 import android.view.View

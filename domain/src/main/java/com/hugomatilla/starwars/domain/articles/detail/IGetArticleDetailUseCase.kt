@@ -13,7 +13,7 @@ import org.jetbrains.anko.uiThread
 interface IGetArticleDetailUseCase : Command<ArticleDomain?, IGetArticleDetailUseCase.Callback> {
 
     interface Callback {
-        fun onArticleLoaded(sections: ArticleDomain?)
+        fun onArticleLoaded(article: ArticleDomain?)
         fun onError(error: ErrorBundle)
     }
 

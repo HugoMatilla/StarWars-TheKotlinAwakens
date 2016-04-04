@@ -1,4 +1,4 @@
-package com.hugomatilla.starwars.ui.activities
+package com.hugomatilla.starwars.articles.detail
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.hugomatilla.starwars.R
+import com.hugomatilla.starwars.base.ctx
 import com.hugomatilla.starwars.domain.model.SectionDomain
 import kotlinx.android.synthetic.main.article_detail_item.view.*
 

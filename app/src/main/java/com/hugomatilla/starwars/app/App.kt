@@ -1,4 +1,4 @@
-package com.hugomatilla.starwars.ui
+package com.hugomatilla.starwars.app
 
 import android.app.Application
 import com.facebook.stetho.Stetho

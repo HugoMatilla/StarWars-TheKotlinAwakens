@@ -1,4 +1,4 @@
-package com.hugomatilla.starwars.ui.activities
+package com.hugomatilla.starwars.articles.list
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.hugomatilla.starwars.R
 import com.hugomatilla.starwars.domain.model.ArticleDomain
+import com.hugomatilla.starwars.base.ctx
 import kotlinx.android.synthetic.main.articles_list_item.view.*
 
 /**
