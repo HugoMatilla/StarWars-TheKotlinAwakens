@@ -13,21 +13,21 @@ class UseCasesTests {
     @Test
     fun getArticleListUseCase() {
         val repository = ArticlesListRepository
-        val result = repository.getArticleList()
-        assertEquals(result.articles?.elementAt(0)!!.id, 4021)
+        val articles = repository.getArticleList()
+        assertEquals(articles?.elementAt(0)!!.id, 4021)
     }
 
     @Test
     fun getArticleDetailUseCase() {
         val repository = ArticlesDetailRepository
-        val result = repository.getArticleDetail(472920)
-        assertEquals(result.sections!!.elementAt(0).title, "Kylo Ren")
-        assertEquals(result.sections!!.elementAt(0).text!!.substring(1951), " completed.")
-        assertEquals(result.sections!!.elementAt(1).title, "Biography")
-        assertEquals(result.sections!!.elementAt(1).level, 2)
-        assertEquals(result.sections!!.elementAt(2).title, "Early life")
-        assertEquals(result.sections!!.elementAt(3).title, "First Order-Resistance conflict")
-        assertEquals(result.sections!!.elementAt(4).image!!.substring(130), "20151231231227")
-        assertEquals(result.sections!!.elementAt(4).caption!!.substring(0, 28), "Ren interrogates Poe Dameron")
+        val article = repository.getArticleDetail(472920)
+        assertEquals(article?.sections!!.elementAt(0).title, "Kylo Ren")
+        assertEquals(article?.sections!!.elementAt(0).text!!.substring(1951), " completed.")
+        assertEquals(article?.sections!!.elementAt(1).title, "Biography")
+        assertEquals(article?.sections!!.elementAt(1).level, 2)
+        assertEquals(article?.sections!!.elementAt(2).title, "Early life")
+        assertEquals(article?.sections!!.elementAt(3).title, "First Order-Resistance conflict")
+        assertEquals(article?.sections!!.elementAt(4).image!!.substring(130), "20151231231227")
+        assertEquals(article?.sections!!.elementAt(4).caption!!.substring(0, 28), "Ren interrogates Poe Dameron")
     }
 }

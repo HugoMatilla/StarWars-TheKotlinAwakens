@@ -9,7 +9,7 @@ import com.hugomatilla.starwars.data.ArticlesListRepository
 import com.hugomatilla.starwars.domain.articles.list.GetArticlesListUseCase
 import com.hugomatilla.starwars.domain.articles.list.IGetArticlesListUseCase
 import com.hugomatilla.starwars.domain.exception.ErrorBundle
-import com.hugomatilla.starwars.domain.model.ArticleDetailDomain
+import com.hugomatilla.starwars.domain.model.ArticleDomain
 import kotlinx.android.synthetic.main.articles_list_activity.*
 import org.jetbrains.anko.alert
 import org.jetbrains.anko.startActivity
@@ -29,8 +29,8 @@ class ArticlesListActivity : AppCompatActivity() {
     private fun getArticlesAndInflate() {
         GetArticlesListUseCase(ArticlesListRepository)
                 .execute(object : IGetArticlesListUseCase.Callback {
-                    override fun onListLoaded(articles: Collection<ArticleDetailDomain>?) {
-                        inflateArticles(articles)
+                    override fun onListLoaded(articles: Collection<ArticleDomain>?) {
+                        inflateArticles(articles as List<ArticleDomain>?)
                         progressBar.visibility = View.GONE
                     }
 
@@ -41,7 +41,7 @@ class ArticlesListActivity : AppCompatActivity() {
                 })
     }
 
-    private fun inflateArticles(articles: Collection<ArticleDetailDomain>?) {
+    private fun inflateArticles(articles: List<ArticleDomain>?) {
         if (articles != null)
             listView.adapter = ArticlesListAdapter(articles,
                     { startActivity<ArticleDetailActivity>(ArticleDetailActivity.ID to it.id, ArticleDetailActivity.HEADER_IMAGE to it.thumbnailFull!!) }
@@ -49,5 +49,4 @@ class ArticlesListActivity : AppCompatActivity() {
         else
             toast("No articles to show. :)")
     }
-
 }

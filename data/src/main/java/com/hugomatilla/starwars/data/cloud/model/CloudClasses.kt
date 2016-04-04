@@ -4,16 +4,17 @@ package com.hugomatilla.starwars.data.cloud.model
  * Created by hugomatilla on 27/02/16.
  */
 
-data class ArticleListCloud(val items: List<ArticleDetailCloud>)
+data class ArticlesListCloud(val items: List<ArticleCloud>)
+data class ArticlesSingleCloud(val items: ArticleCloud)
 
-data class ArticleDetailCloud(
+data class ArticleCloud(
         val id: Int,
         val title: String,
         val abstract: String,
         val thumbnail: String?,
         val original_dimensions: Dimensions?,
-        val url: String,
-        val type: String
+        val url: String?,
+        val type: String?
 )
 
 data class Dimensions(
@@ -21,7 +22,7 @@ data class Dimensions(
         val height: Int
 )
 
-data class ArticleContentCloud(
+data class SectionsCloud(
         val sections: Collection<Section>?
 )
 

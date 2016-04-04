@@ -9,7 +9,8 @@ import com.hugomatilla.starwars.data.ArticlesDetailRepository
 import com.hugomatilla.starwars.domain.articles.detail.GetArticleDetailUseCase
 import com.hugomatilla.starwars.domain.articles.detail.IGetArticleDetailUseCase
 import com.hugomatilla.starwars.domain.exception.ErrorBundle
-import com.hugomatilla.starwars.domain.model.SectionContent
+import com.hugomatilla.starwars.domain.model.ArticleDomain
+import com.hugomatilla.starwars.domain.model.SectionDomain
 import kotlinx.android.synthetic.main.article_detail_activity.*
 import org.jetbrains.anko.alert
 import org.jetbrains.anko.toast
@@ -18,9 +19,10 @@ class ArticleDetailActivity : Activity() {
 
     companion object {
         val ID = "ArticleDetailActivity.ID"
-        val TITLE = "ArticleDetailActivity.TITLE"
         val HEADER_IMAGE = "ArticleDetailActivity.HEADER_IMAGE"
     }
+
+    val headerImage: String by lazy { intent.getStringExtra(HEADER_IMAGE) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,8 +33,8 @@ class ArticleDetailActivity : Activity() {
 
         GetArticleDetailUseCase(id, ArticlesDetailRepository)
                 .execute(object : IGetArticleDetailUseCase.Callback {
-                    override fun onArticleLoaded(sections: Collection<SectionContent>?) {
-                        inflateArticle(sections)
+                    override fun onArticleLoaded(article: ArticleDomain?) {
+                        inflateArticle(article?.sections)
                         progressBar.visibility = View.GONE
                     }
 
@@ -40,11 +42,10 @@ class ArticleDetailActivity : Activity() {
                         progressBar.visibility = View.GONE
                         alert(error.errorMessage, "Error") { positiveButton("OK") { } }.show()
                     }
-
                 })
     }
 
-    private fun inflateArticle(sections: Collection<SectionContent>?) {
+    private fun inflateArticle(sections: Collection<SectionDomain>?) {
 
         if (sections != null) {
             val sectionsWithHeader = addArticleHeaderInfo(sections)
@@ -53,10 +54,9 @@ class ArticleDetailActivity : Activity() {
             toast("Sorry this article is empty. :)")
     }
 
-    private fun addArticleHeaderInfo(sections: Collection<SectionContent>): Collection<SectionContent> {
-        val headerImage = intent.getStringExtra(HEADER_IMAGE)
+    private fun addArticleHeaderInfo(sections: Collection<SectionDomain>): Collection<SectionDomain> {
         var sectionsMutable = sections.toMutableList()
-        var headerSection = with(sections.elementAt(0)) { SectionContent(title, level, text, headerImage, caption) }
+        var headerSection = with(sections.elementAt(0)) { SectionDomain(title, level, text, headerImage, caption) }
         sectionsMutable.removeAt(0)
         sectionsMutable.add(0, headerSection)
         return sectionsMutable.toList()

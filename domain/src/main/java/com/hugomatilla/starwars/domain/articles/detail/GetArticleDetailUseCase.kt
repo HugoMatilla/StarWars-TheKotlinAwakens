@@ -1,6 +1,7 @@
 package com.hugomatilla.starwars.domain.articles.detail
 
 import com.hugomatilla.starwars.domain.articles.IArticleDetailRepository
+import com.hugomatilla.starwars.domain.exception.DefaultError
 import org.jetbrains.anko.async
 import org.jetbrains.anko.uiThread
 
@@ -16,12 +17,11 @@ class GetArticleDetailUseCase(
 
     override fun execute(callback: IGetArticleDetailUseCase.Callback) {
         async() {
-            val result = repository.getArticleDetail(id)
-            uiThread {
-                if (result.error == null)
-                    callback.onArticleLoaded(result.sections)
-                else
-                    callback.onError(result.error)
+            try {
+                val result = repository.getArticleDetail(id)
+                uiThread { callback.onArticleLoaded(result) }
+            } catch(e: Exception) {
+                uiThread { callback.onError(DefaultError(e)) }
             }
         }
     }

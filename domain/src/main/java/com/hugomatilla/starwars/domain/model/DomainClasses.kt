@@ -3,7 +3,7 @@ package com.hugomatilla.starwars.domain.model
 /**
  * Created by hugomatilla on 27/02/16.
  */
-data class ArticleDetailDomain(
+data class ArticleDomain(
         val id: Int,
         val title: String?,
         val abstract: String?,
@@ -13,15 +13,14 @@ data class ArticleDetailDomain(
         val originalHeight: Int?,
         val url: String?,
         val type: String?,
-        val sections: Collection<SectionContent>?
+        var sections: Collection<SectionDomain>?
 )
 
-data class SectionContent(
+data class SectionDomain(
         val title: String?,
         val level: Int?,
         val text: String?,
         val image: String?,
         val caption: String?
 )
-
 

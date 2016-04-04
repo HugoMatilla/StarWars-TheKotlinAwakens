@@ -1,19 +1,28 @@
 package com.hugomatilla.starwars.data.cloud
 
-import com.hugomatilla.starwars.data.IDataSource
-import com.hugomatilla.starwars.domain.articles.GetArticleDetailResult
-import com.hugomatilla.starwars.domain.articles.GetArticlesListResult
+import com.hugomatilla.starwars.data.IReadableDataSource
+import com.hugomatilla.starwars.data.db.Db
+import com.hugomatilla.starwars.domain.model.ArticleDomain
+import com.hugomatilla.starwars.domain.model.SectionDomain
 
 /**
  * Created by hugomatilla on 27/02/16.
  */
 
-class Cloud : IDataSource {
-    override fun getArticleList(): GetArticlesListResult {
+class Cloud : IReadableDataSource {
+
+
+    override fun getArticleList(): Collection<ArticleDomain>? {
         return RestService().fetchArticlesList()
     }
 
-    override fun getArticleDetail(id: Int): GetArticleDetailResult {
-        return RestService().fetchArticleDetail(id)
+    override fun getArticleDetailById(id: Int): ArticleDomain? {
+        val article = Db().getArticleDetailById(id)
+        article?.sections = getArticleSections(id)
+        return article
+    }
+
+    override fun getArticleSections(id: Int): Collection<SectionDomain>? {
+        return RestService().fetchArticleSections(id)
     }
 }
