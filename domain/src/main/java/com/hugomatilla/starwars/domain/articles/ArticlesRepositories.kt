@@ -9,6 +9,7 @@ import com.hugomatilla.starwars.domain.model.ArticleDomain
 interface IArticlesListRepository {
 
     fun getArticleList(): Collection<ArticleDomain>?
+    fun deleteDatabase()
 }
 
 interface IArticleDetailRepository {

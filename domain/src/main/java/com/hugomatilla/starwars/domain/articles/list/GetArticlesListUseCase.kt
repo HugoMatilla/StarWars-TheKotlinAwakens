@@ -8,8 +8,7 @@ import com.hugomatilla.starwars.domain.exception.DefaultError
  */
 
 
-class GetArticlesListUseCase(
-        val repository: IArticlesListRepository) :
+class GetArticlesListUseCase(val repository: IArticlesListRepository) :
         IGetArticlesListUseCase {
 
     override fun execute(callback: IGetArticlesListUseCase.Callback) {

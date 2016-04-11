@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/action_delete_database"
         android:orderInCategory="1"
-        android:title="settings"/>
+        android:title="Delete Database"/>
 </menu>

@@ -1,9 +1,9 @@
 package com.hugomatilla.starwars.widgets
 
 import android.support.v7.graphics.drawable.DrawerArrowDrawable
-import android.widget.Toolbar
 import com.hugomatilla.starwars.R
 import com.hugomatilla.starwars.app.App
+import com.hugomatilla.starwars.articles.list.ArticlesListPresenter
 import com.hugomatilla.starwars.base.ctx
 import org.jetbrains.anko.toast
 
@@ -20,15 +20,21 @@ interface ToolbarManager {
         }
 
 
-    fun initToolbar() {
+    fun initToolbarSettings(presenter: ArticlesListPresenter) {
         toolbar.inflateMenu(R.menu.menu_main)
         toolbar.setOnMenuItemClickListener {
             when (it.itemId) {
-                R.id.action_settings -> App.instance.toast("Settings")
+                R.id.action_delete_database -> deleteDatabase(presenter)
                 else -> App.instance.toast("Unknown option")
             }
             true
         }
+    }
+
+    private fun deleteDatabase(presenter: ArticlesListPresenter) {
+        App.instance.toast("Deleting Database")
+        presenter.deleteDatabase()
+
     }
 
     fun enableHomeAsUp(up: () -> Unit) {

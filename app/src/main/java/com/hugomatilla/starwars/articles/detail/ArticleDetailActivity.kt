@@ -29,7 +29,6 @@ class ArticleDetailActivity : Activity(), ArticleDetailPresenter.View, ToolbarMa
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.article_detail_activity)
-        initToolbar()
         toolbar.title = intent.getStringExtra(HEADER_TITLE)
         enableHomeAsUp { onBackPressed() }
         sectionsListView.layoutManager = LinearLayoutManager(this)

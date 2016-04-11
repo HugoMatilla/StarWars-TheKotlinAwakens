@@ -9,6 +9,8 @@ import com.hugomatilla.starwars.R
 import com.hugomatilla.starwars.base.ctx
 import com.hugomatilla.starwars.domain.model.SectionDomain
 import kotlinx.android.synthetic.main.article_detail_item.view.*
+import org.jetbrains.anko.AnkoLogger
+import org.jetbrains.anko.info
 
 
 /**
@@ -29,11 +31,17 @@ class ArticleDetailAdapter(val sections: Collection<SectionDomain>) :
 
     override fun getItemCount() = sections.size
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view), AnkoLogger {
 
         fun bindSection(section: SectionDomain) {
             with(section) {
-                Glide.with(itemView.ctx).load(section.image).crossFade().into(itemView.sectionImageView)
+                if (section.image.isNullOrEmpty())
+                    itemView.sectionImageView.visibility = View.GONE
+                else {
+                    Glide.with(itemView.ctx).load(section.image).crossFade().into(itemView.sectionImageView)
+                    itemView.sectionImageView.visibility = View.VISIBLE
+                }
+                info("Adapter title:${section.title}, image:${section.image}, View: ${itemView.sectionImageView.visibility }")
                 itemView.sectionTitleView.text = title
                 itemView.sectionDescriptionView.text = text
             }

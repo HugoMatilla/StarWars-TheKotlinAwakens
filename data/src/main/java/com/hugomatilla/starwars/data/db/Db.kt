@@ -89,4 +89,9 @@ class Db(val dbHelper: DbHelper = DbHelper.instance,
             sectionsDb.forEach { replace(SectionTable.TABLE_NAME, *it.map.toVarargArray()) }
         }
     }
+
+    fun clearDatabase() = dbHelper.use {
+        delete(ArticleTable.TABLE_NAME, "", null)
+        delete(SectionTable.TABLE_NAME, "", null)
+    }
 }

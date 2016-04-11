@@ -13,6 +13,7 @@ import org.jetbrains.anko.error
 
 object ArticlesListRepository : IArticlesListRepository, AnkoLogger {
 
+
     val DB = Db()
     val CLOUD = Cloud()
 
@@ -27,6 +28,15 @@ object ArticlesListRepository : IArticlesListRepository, AnkoLogger {
                 return articlesFromDb
         } catch(e: Exception) {
             error("Error in Repo: ${e.message}")
+            throw e
+        }
+    }
+
+    override fun deleteDatabase() {
+        try {
+            DB.clearDatabase()
+        } catch(e: Exception) {
+            error("Error in deleting DB: ${e.message}")
             throw e
         }
     }

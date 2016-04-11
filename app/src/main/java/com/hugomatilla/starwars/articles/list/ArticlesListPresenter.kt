@@ -3,7 +3,9 @@ package com.hugomatilla.starwars.articles.list
 import com.hugomatilla.starwars.base.Presenter
 import com.hugomatilla.starwars.data.ArticlesListRepository
 import com.hugomatilla.starwars.data.isEmptyOrNull
+import com.hugomatilla.starwars.domain.articles.list.DeleteAllArticlesUseCase
 import com.hugomatilla.starwars.domain.articles.list.GetArticlesListUseCase
+import com.hugomatilla.starwars.domain.articles.list.IDeleteAllArticlesUseCase
 import com.hugomatilla.starwars.domain.articles.list.IGetArticlesListUseCase
 import com.hugomatilla.starwars.domain.exception.ErrorBundle
 import com.hugomatilla.starwars.domain.model.ArticleDomain
@@ -45,8 +47,29 @@ class ArticlesListPresenter(view: ArticlesListPresenter.View) : Presenter<Articl
     interface View : Presenter.View {
         fun showList(articles: Collection<ArticleDomain>)
     }
+
+    //Todo move to its own presenter
+    override fun deleteDatabase() {
+        async() {
+            DeleteAllArticlesUseCase(ArticlesListRepository).execute(object : IDeleteAllArticlesUseCase.Callback {
+                override fun onArticlesDeleted() {
+                    uiThread {
+                        view.hideLoading()
+                    }
+                }
+
+                override fun onError(error: ErrorBundle) {
+                    uiThread {
+                        view.hideLoading()
+                        view.showError(error.errorMessage)
+                    }
+                }
+            })
+        }
+    }
 }
 
 interface IArticlesListPresenter {
     fun getArticlesList()
+    fun deleteDatabase()
 }
