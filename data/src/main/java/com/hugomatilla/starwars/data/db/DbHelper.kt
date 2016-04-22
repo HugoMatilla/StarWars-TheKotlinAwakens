@@ -21,6 +21,7 @@ class DbHelper(ctx: Context) : ManagedSQLiteOpenHelper(ctx,
 
         //Todo What if someone call init several times
         fun init(ctx: Context) {
+            // if (instance == null)
             instance = DbHelper(ctx)
         }
 

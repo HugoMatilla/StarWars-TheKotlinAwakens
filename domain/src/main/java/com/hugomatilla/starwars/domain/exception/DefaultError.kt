@@ -6,5 +6,6 @@ package com.hugomatilla.starwars.domain.exception
 class DefaultError(override val exception: Exception) : ErrorBundle {
 
     override val errorMessage: String
-        get() = exception.message.orEmpty()
+        get() = exception.message.toString()
+
 }
