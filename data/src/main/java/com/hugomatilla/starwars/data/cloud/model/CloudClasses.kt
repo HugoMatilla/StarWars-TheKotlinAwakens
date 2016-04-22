@@ -4,10 +4,9 @@ package com.hugomatilla.starwars.data.cloud.model
  * Created by hugomatilla on 27/02/16.
  */
 
-data class ArticlesListCloud(val items: List<ArticleCloud>)
-data class ArticlesSingleCloud(val items: ArticleCloud)
+data class ArticlesListCloud(val items: List<ArticleAbstractCloud>)
 
-data class ArticleCloud(
+data class ArticleAbstractCloud(
         val id: Int,
         val title: String,
         val abstract: String,

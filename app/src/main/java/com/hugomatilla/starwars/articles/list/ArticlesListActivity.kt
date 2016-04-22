@@ -38,6 +38,17 @@ class ArticlesListActivity : AppCompatActivity(), ArticlesListPresenter.View, To
         inflateArticles(articles as List<ArticleDomain>)
     }
 
+    private fun inflateArticles(articles: List<ArticleDomain>) {
+        listView.adapter = ArticlesListAdapter(articles, { navigateToDetail(it) })
+    }
+
+    private fun navigateToDetail(it: ArticleDomain) {
+        startActivity<ArticleDetailActivity>(
+                ArticleDetailActivity.ID to it.id,
+                ArticleDetailActivity.HEADER_TITLE to it.title.orEmpty(),
+                ArticleDetailActivity.HEADER_IMAGE to it.thumbnailFull.orEmpty())
+    }
+
     override fun showError(message: String) {
         alert(message) { positiveButton("OK") { } }.show()
     }
@@ -55,14 +66,4 @@ class ArticlesListActivity : AppCompatActivity(), ArticlesListPresenter.View, To
 
     }
 
-    private fun inflateArticles(articles: List<ArticleDomain>) {
-        listView.adapter = ArticlesListAdapter(articles, { navigateToDetail(it) })
-    }
-
-    private fun navigateToDetail(it: ArticleDomain) {
-        startActivity<ArticleDetailActivity>(
-                ArticleDetailActivity.ID to it.id,
-                ArticleDetailActivity.HEADER_TITLE to it.title.orEmpty(),
-                ArticleDetailActivity.HEADER_IMAGE to it.thumbnailFull.orEmpty())
-    }
 }

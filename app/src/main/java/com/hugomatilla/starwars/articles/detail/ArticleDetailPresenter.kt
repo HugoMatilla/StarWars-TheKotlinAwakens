@@ -38,13 +38,6 @@ class ArticleDetailPresenter(view: View) : Presenter<ArticleDetailPresenter.View
         }
     }
 
-    override fun onInitialize() {
-    }
-
-    override fun onStop() {
-    }
-
-
     interface View : Presenter.View {
         fun showArticle(sections: Collection<SectionDomain>)
     }

@@ -10,11 +10,12 @@ import org.jetbrains.anko.db.*
  * Created by hugomatilla on 19/03/16.
  */
 
-class DbHelper(ctx: Context) : ManagedSQLiteOpenHelper(ctx,
-        DbHelper.DB_NAME, null, DbHelper.DB_VERSION) {
+class DbHelper(ctx: Context, name: String = DbHelper.DB_NAME, version: Int = DbHelper.DB_VERSION) :
+        ManagedSQLiteOpenHelper(ctx, name, null, version) {
 
     companion object {
         val DB_NAME = "starwars.db"
+        val DB_NAME_MOCK = "starwars.test.db"
         val DB_VERSION = 1
         lateinit var instance: DbHelper
             private set

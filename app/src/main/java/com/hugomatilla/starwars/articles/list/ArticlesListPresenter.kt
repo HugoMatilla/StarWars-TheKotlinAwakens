@@ -22,8 +22,10 @@ class ArticlesListPresenter(view: ArticlesListPresenter.View) : Presenter<Articl
             GetArticlesListUseCase(ArticlesListRepository).execute(object : IGetArticlesListUseCase.Callback {
                 override fun onListLoaded(articles: Collection<ArticleDomain>?) {
                     uiThread {
-                        if (articles.isEmptyOrNull()) view.showEmptyCase()
-                        else view.showList(articles!!)
+                        if (articles.isEmptyOrNull())
+                            view.showEmptyCase()
+                        else
+                            view.showList(articles!!)
                         view.hideLoading()
                     }
                 }
@@ -36,12 +38,6 @@ class ArticlesListPresenter(view: ArticlesListPresenter.View) : Presenter<Articl
                 }
             })
         }
-    }
-
-    override fun onInitialize() {
-    }
-
-    override fun onStop() {
     }
 
     interface View : Presenter.View {

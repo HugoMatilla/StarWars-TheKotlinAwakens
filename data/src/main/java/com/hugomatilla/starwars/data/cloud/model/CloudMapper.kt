@@ -16,7 +16,7 @@ class CloudMapper {
         return articleList.items.map { articleDetailToDomain(it) }
     }
 
-    fun articleDetailToDomain(article: ArticleCloud, sections: Collection<SectionDomain>? = null): ArticleDomain {
+    fun articleDetailToDomain(article: ArticleAbstractCloud, sections: Collection<SectionDomain>? = null): ArticleDomain {
         return with(article) {
             ArticleDomain(
                     id,

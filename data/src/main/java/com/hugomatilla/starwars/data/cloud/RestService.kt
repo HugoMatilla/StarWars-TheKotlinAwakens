@@ -6,7 +6,9 @@ package com.hugomatilla.starwars.data.cloud
  */
 
 import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import com.google.gson.JsonSyntaxException
+import com.hugomatilla.starwars.data.cloud.model.ArticleAbstractCloud
 import com.hugomatilla.starwars.data.cloud.model.ArticlesListCloud
 import com.hugomatilla.starwars.data.cloud.model.CloudMapper
 import com.hugomatilla.starwars.data.cloud.model.SectionsCloud
@@ -22,9 +24,9 @@ class RestService(val cloudMapper: CloudMapper = CloudMapper(),
         val BASE_URL = "http://starwars.wikia.com/api/v1/"
         val TOP_ARTICLES_PART = "Articles/Top?expand=1&abstract=50&width=300&height=300"
         val TOP_ARTICLES_URL = BASE_URL + TOP_ARTICLES_PART
-        val DETAIL_ARTICLE_PART = "Articles/Details/?ids="
+        val ABSTRACT_ARTICLE_PART = "Articles/Details/?ids="
         val SECTIONS_ARTICLE_PART = "Articles/AsSimpleJson/?id="
-        val DETAIL_ARTICLE_URL = BASE_URL + DETAIL_ARTICLE_PART
+        val ABSTRACT_ARTICLE_URL = BASE_URL + ABSTRACT_ARTICLE_PART
         val SECTIONS_ARTICLE_URL = BASE_URL + SECTIONS_ARTICLE_PART
     }
 
@@ -42,12 +44,12 @@ class RestService(val cloudMapper: CloudMapper = CloudMapper(),
         }
     }
 
-    fun fetchArticleDetail(id: Int, url: String = Uris.DETAIL_ARTICLE_URL): ArticleDomain? {
+    fun fetchArticleAbstract(id: Int, url: String = Uris.ABSTRACT_ARTICLE_URL): ArticleDomain? {
         try {
             val jsonStr = URL(url + id).readText()
-            val content = gson.fromJson(jsonStr, ArticlesListCloud::class.java)
-            val a = "a"
-            return cloudMapper.articleDetailToDomain(content.items.elementAt(0), fetchArticleSections(id))
+            val customGson = GsonBuilder().registerTypeAdapter(ArticleAbstractCloud::class.java, ArticleCloudDeserializer(id)).create()
+            val content = customGson.fromJson(jsonStr, ArticleAbstractCloud::class.java)
+            return cloudMapper.articleDetailToDomain(content, fetchArticleSections(id))
 
         } catch(error: MalformedURLException) {
             throw error

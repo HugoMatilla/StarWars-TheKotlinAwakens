@@ -20,41 +20,66 @@ class CloudUnitTest {
         val jsonStr = File(jsonFilePath).readText(charset = Charsets.UTF_8)
     }
 
+    // ----- Article List -----
     @Test
     fun requestTopArticles() {
         val articles = RestService().fetchArticlesList()
-        assertNotEquals(articles?.size, 0)
-        assertEquals(articles?.elementAt(0)?.id, 4021)
+        assertEquals(articles.size, 245)
     }
 
     @Test
-    fun requestCatchMalformedUrl() {
+    fun catchMalformedUrl() {
         try {
             RestService().fetchArticlesList("htp://starwars.wikia.com/api/v1/" + RestService.Uris.TOP_ARTICLES_PART)
             fail("MalformedURLException not catch");
         } catch (error: MalformedURLException) {
+            assert(true)
         }
     }
 
     @Test
-    fun requestCatchJsonSyntaxException() {
+    fun catchJsonSyntaxException() {
         try {
             RestService().fetchArticlesList("https://gist.githubusercontent.com/HugoMatilla/19d30910297dac9a2844/raw/eceadb974a61b7695ef6fee8501ac9c753a07a1a/MalformedJson.json")
             fail("JsonSyntaxException not catch");
         } catch (error: JsonSyntaxException) {
+            assert(true)
         }
     }
 
+    // ----- Article Detail -----
     @Test
-    fun requestArticle() {
-        //        val article = RestService().fetchArticleDetail(452217)
-        //        assertNotNull(article)
-        //        if (sections != null)
-        //            assertEquals(sections.title, "Luke Skywalker")
+    fun requestArticleAbstract() {
+        val article = RestService().fetchArticleAbstract(452217)
+        assertNotNull(article)
+        if (article != null) {
+            val sections = article.sections
+            if (sections == null)
+                fail("sections is null")
+            else {
+                val title = sections.elementAt(0).title
+                if (title == null)
+                    fail("title is null")
+                else
+                    assertEquals(title, "Luke Skywalker")
+            }
+        }
     }
 
+    // ----- Article Sections -----
     @Test
-    fun parseJsonDetailToArticleContent() {
+    fun requestArticleSections() {
+        val sections = RestService().fetchArticleSections(472920)
+        if (sections != null)
+            assertEquals(sections.elementAt(0).title, "Kylo Ren")
+        else
+            fail("sections is null")
+    }
+
+
+    // ----- Mapping -----
+    @Test
+    fun mapJsonDetailToArticleContent() {
         val content = Gson().fromJson(jsonStr, SectionsCloud::class.java)
         val sections = content.sections
         if (sections != null) {
@@ -70,7 +95,7 @@ class CloudUnitTest {
     }
 
     @Test
-    fun convertArticleContentToDomain() {
+    fun mapArticleContentToDomain() {
         val cloudMapper = CloudMapper()
         val content = Gson().fromJson(jsonStr, SectionsCloud::class.java)
         val sections = cloudMapper.articleSectionsContentToDomain(content)

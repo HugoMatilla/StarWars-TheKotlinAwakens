@@ -9,9 +9,6 @@ import com.hugomatilla.starwars.widgets.ILoadingDialog
 
 abstract class Presenter<T : Presenter.View>(val view: T) {
 
-    abstract fun onInitialize()
-    abstract fun onStop()
-
     interface View : IErrorDialog, ILoadingDialog {
         fun showEmptyCase()
     }
