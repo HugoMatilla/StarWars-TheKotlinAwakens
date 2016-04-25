@@ -15,7 +15,7 @@ class DbMapper {
     }
 
     fun articleFromDbToDomain(article: ArticleDb, sections: Collection<SectionDb>?) = with(article) {
-        ArticleDomain(_id.toInt(), title, abstract, thumbnail, thumbnail, width, height, url, type, sectionsFromDbToDomain(sections))
+        ArticleDomain(_id.toInt(), title, abstract, thumbnail, width, height, url, type, sectionsFromDbToDomain(sections))
     }
 
     fun sectionsFromDbToDomain(sections: Collection<SectionDb>?): Collection<SectionDomain>? {
@@ -38,8 +38,8 @@ class DbMapper {
                 thumbnail.orEmpty(),
                 originalWidth ?: 0,
                 originalHeight ?: 0,
-                url.orEmpty(),
                 type.orEmpty(),
+                url.orEmpty(),
                 sections
         )
     }

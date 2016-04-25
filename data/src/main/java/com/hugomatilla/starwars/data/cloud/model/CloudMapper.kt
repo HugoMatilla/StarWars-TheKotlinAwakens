@@ -23,7 +23,6 @@ class CloudMapper {
                     title,
                     abstract,
                     thumbnail ?: PLACE_HOLDER,
-                    getFullImageUrl(thumbnail ?: PLACE_HOLDER),
                     original_dimensions?.width,
                     original_dimensions?.height,
                     url,
@@ -39,12 +38,11 @@ class CloudMapper {
                     it.title,
                     it.level,
                     it.content.map { it.text }.joinToString("\n"),
-                    getFullImageUrl(it.images.firstOrNull()?.src),
+                    it.images.firstOrNull()?.src,
                     it.images.firstOrNull()?.caption
             )
         }
     }
 
 
-    private fun getFullImageUrl(thumbnail: String?) = thumbnail?.replace(Regex("scale-to-width-down/\\d\\d\\d"), "scale-to-width-down/500")
 }

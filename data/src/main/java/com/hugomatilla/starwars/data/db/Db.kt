@@ -67,11 +67,7 @@ class Db(val dbHelper: DbHelper = DbHelper.instance,
     }
 
     fun saveArticles(articles: Collection<ArticleDomain>?) = dbHelper.use {
-        if (articles != null) {
-            clear(ArticleTable.TABLE_NAME)
-            val articlesDb = dataMapper.articlesFromDomainToDb(articles)
-            articlesDb.forEach { replace(ArticleTable.TABLE_NAME, *it.map.toVarargArray()) }
-        }
+        articles?.forEach { saveArticle(it) }
     }
 
     fun saveArticle(article: ArticleDomain?) = dbHelper.use {

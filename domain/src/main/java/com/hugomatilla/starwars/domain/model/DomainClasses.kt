@@ -8,7 +8,6 @@ data class ArticleDomain(
         val title: String?,
         val abstract: String?,
         val thumbnail: String?,
-        val thumbnailFull: String?,
         val originalWidth: Int?,
         val originalHeight: Int?,
         val url: String?,

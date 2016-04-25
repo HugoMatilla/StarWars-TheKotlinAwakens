@@ -46,7 +46,7 @@ class ArticlesListActivity : AppCompatActivity(), ArticlesListPresenter.View, To
         startActivity<ArticleDetailActivity>(
                 ArticleDetailActivity.ID to it.id,
                 ArticleDetailActivity.HEADER_TITLE to it.title.orEmpty(),
-                ArticleDetailActivity.HEADER_IMAGE to it.thumbnailFull.orEmpty())
+                ArticleDetailActivity.HEADER_IMAGE to it.thumbnail.orEmpty())
     }
 
     override fun showError(message: String) {
