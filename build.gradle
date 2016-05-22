@@ -3,7 +3,7 @@
 buildscript {
     ext.sdk_version = 23
     ext.build_version = '23.0.3'
-    ext.support_version = '23.3.0'
+    ext.support_version = '23.4.0'
     ext.kotlin_version = '1.0.0'
     ext.anko_version = '0.8.2'
     ext.espresso_runner_version = '0.4.1'
