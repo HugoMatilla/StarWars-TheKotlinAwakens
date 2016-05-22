@@ -2,8 +2,8 @@ package com.hugomatilla.starwars.data
 
 import com.hugomatilla.starwars.data.cloud.Cloud
 import com.hugomatilla.starwars.data.db.Db
-import com.hugomatilla.starwars.domain.articles.IArticlesListRepository
-import com.hugomatilla.starwars.domain.model.ArticleDomain
+import com.hugomatilla.starwars.domain2.articles.IArticlesListRepository
+import com.hugomatilla.starwars.domain2.model.ArticleDomain
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.error
 

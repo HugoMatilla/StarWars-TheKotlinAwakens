@@ -1,4 +1,4 @@
-package com.hugomatilla.starwars.domain.exception
+package com.hugomatilla.starwars.domain2.exception
 
 /**
  * Created by hugomatilla on 27/03/16.

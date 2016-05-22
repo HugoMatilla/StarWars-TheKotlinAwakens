@@ -1,10 +1,10 @@
-package com.hugomatilla.starwars.domain.articles.detail
+package com.hugomatilla.starwars.domain2.articles.detail
 
-import com.hugomatilla.starwars.domain.articles.IArticleDetailRepository
-import com.hugomatilla.starwars.domain.base.Command
-import com.hugomatilla.starwars.domain.exception.DefaultError
-import com.hugomatilla.starwars.domain.exception.ErrorBundle
-import com.hugomatilla.starwars.domain.model.ArticleDomain
+import com.hugomatilla.starwars.domain2.articles.IArticleDetailRepository
+import com.hugomatilla.starwars.domain2.base.Command
+import com.hugomatilla.starwars.domain2.exception.DefaultError
+import com.hugomatilla.starwars.domain2.exception.ErrorBundle
+import com.hugomatilla.starwars.domain2.model.ArticleDomain
 
 /**
  * Created by hugomatilla on 28/02/16.

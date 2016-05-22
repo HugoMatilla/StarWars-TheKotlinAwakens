@@ -11,7 +11,7 @@ import com.hugomatilla.starwars.domain.model.SectionDomain
 /**
  * [Testing Fundamentals](http://d.android.com/tools/testing/testing_android.html)
  */
-class DataTests : ApplicationTestCase<Application>(Application::class.java) {
+class DbTests : ApplicationTestCase<Application>(Application::class.java) {
     private var DB: Db? = null
 
     @Throws(Exception::class)
@@ -21,7 +21,7 @@ class DataTests : ApplicationTestCase<Application>(Application::class.java) {
         DB = Db(DbHelper(application.applicationContext, DbHelper.DB_NAME_MOCK, 1), DbMapper())
     }
 
-    fun test_saveAndGetArticle() {
+    fun testSaveAndGetArticle() {
         val section1 = SectionDomain("Title1", 1, "Text1", "Image1", "Caption1")
         val section2 = SectionDomain("Title2", 2, "Text2", "Image2", "Caption2")
         val article1 = ArticleDomain(1, "Title", "Abstract", "Thumbnail", 1, 2, "Url", "Type", listOf(section1, section2))
@@ -30,7 +30,7 @@ class DataTests : ApplicationTestCase<Application>(Application::class.java) {
         assertEquals(result, article1)
     }
 
-    fun test_GetSections() {
+    fun testGetSections() {
         val section1 = SectionDomain("Title1", 1, "Text1", "Image1", "Caption1")
         val section2 = SectionDomain("Title2", 2, "Text2", "Image2", "Caption2")
         val article1 = ArticleDomain(1, "Title", "Abstract", "Thumbnail", 1, 2, "Url", "Type", listOf(section1, section2))
@@ -40,7 +40,7 @@ class DataTests : ApplicationTestCase<Application>(Application::class.java) {
     }
 
 
-    fun test_saveAndGetArticles() {
+    fun testSaveAndGetArticles() {
         val section1 = SectionDomain("Title1", 1, "Text1", "Image1", "Caption1")
         val section2 = SectionDomain("Title2", 2, "Text2", "Image2", "Caption2")
         val article2 = ArticleDomain(2, "Title1", "Abstract1", "Thumbnail1", 1, 2, "Url1", "Type1", listOf(section1, section2))
@@ -62,7 +62,6 @@ class DataTests : ApplicationTestCase<Application>(Application::class.java) {
         DB!!.saveArticles(listOf(article1, article2, article3))
         val result4 = DB!!.getArticleList()
         assertEquals(result4?.size, 3)
-
     }
 
     override fun tearDown() {

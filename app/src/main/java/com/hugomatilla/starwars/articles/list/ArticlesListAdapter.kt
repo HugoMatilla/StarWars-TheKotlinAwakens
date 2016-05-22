@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.hugomatilla.starwars.R
-import com.hugomatilla.starwars.domain.model.ArticleDomain
 import com.hugomatilla.starwars.base.ctx
+import com.hugomatilla.starwars.domain2.model.ArticleDomain
 import kotlinx.android.synthetic.main.articles_list_item.view.*
 
 /**

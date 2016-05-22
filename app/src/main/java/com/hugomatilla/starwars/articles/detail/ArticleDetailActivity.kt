@@ -6,7 +6,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.Toolbar
 import android.view.View
 import com.hugomatilla.starwars.R
-import com.hugomatilla.starwars.domain.model.SectionDomain
+import com.hugomatilla.starwars.domain2.model.SectionDomain
 import com.hugomatilla.starwars.widgets.ToolbarManager
 import kotlinx.android.synthetic.main.article_detail_activity.*
 import org.jetbrains.anko.alert
@@ -14,6 +14,7 @@ import org.jetbrains.anko.find
 import org.jetbrains.anko.toast
 
 class ArticleDetailActivity : Activity(), ArticleDetailPresenter.View, ToolbarManager {
+
     override val toolbar: Toolbar by lazy { find<Toolbar>(R.id.toolbar) }
 
 
@@ -59,8 +60,8 @@ class ArticleDetailActivity : Activity(), ArticleDetailPresenter.View, ToolbarMa
 
 
     private fun addArticleHeaderInfo(sections: Collection<SectionDomain>): Collection<SectionDomain> {
-        var sectionsMutable = sections.toMutableList()
-        var headerSection = with(sections.elementAt(0)) { SectionDomain(title, level, text, headerImage, caption) }
+        val sectionsMutable = sections.toMutableList()
+        val headerSection = with(sections.elementAt(0)) { SectionDomain(title, level, text, headerImage, caption) }
         sectionsMutable.removeAt(0)
         sectionsMutable.add(0, headerSection)
         return sectionsMutable.toList()

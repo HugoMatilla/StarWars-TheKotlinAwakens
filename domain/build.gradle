@@ -1,42 +1,12 @@
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-
-android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.2"
-
-    defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-    sourceSets {
-        main.java.srcDirs += 'src/main/kotlin'
-    }
-}
+apply plugin: 'java'
+apply plugin: 'kotlin'
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    //test
-    testCompile 'junit:junit:4.12'
-
-    //kotlin
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-
-    //anko
-    compile "org.jetbrains.anko:anko-common:$anko_version"
-
-
 }
 buildscript {
-    ext.kotlin_version = '1.0.0'
+    ext.kotlin_version = '1.0.2'
     repositories {
         mavenCentral()
     }
@@ -46,4 +16,7 @@ buildscript {
 }
 repositories {
     mavenCentral()
+}
+sourceSets {
+    main.java.srcDirs += 'src/main/kotlin'
 }

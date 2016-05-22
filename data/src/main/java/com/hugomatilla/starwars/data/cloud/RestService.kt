@@ -12,8 +12,8 @@ import com.hugomatilla.starwars.data.cloud.model.ArticleAbstractCloud
 import com.hugomatilla.starwars.data.cloud.model.ArticlesListCloud
 import com.hugomatilla.starwars.data.cloud.model.CloudMapper
 import com.hugomatilla.starwars.data.cloud.model.SectionsCloud
-import com.hugomatilla.starwars.domain.model.ArticleDomain
-import com.hugomatilla.starwars.domain.model.SectionDomain
+import com.hugomatilla.starwars.domain2.model.ArticleDomain
+import com.hugomatilla.starwars.domain2.model.SectionDomain
 import java.net.MalformedURLException
 import java.net.URL
 

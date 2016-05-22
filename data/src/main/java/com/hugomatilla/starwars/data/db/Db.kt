@@ -3,8 +3,8 @@ package com.hugomatilla.starwars.data.db
 import com.hugomatilla.starwars.data.IReadableDataSource
 import com.hugomatilla.starwars.data.db.model.*
 import com.hugomatilla.starwars.data.toVarargArray
-import com.hugomatilla.starwars.domain.model.ArticleDomain
-import com.hugomatilla.starwars.domain.model.SectionDomain
+import com.hugomatilla.starwars.domain2.model.ArticleDomain
+import com.hugomatilla.starwars.domain2.model.SectionDomain
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.db.replace
 import org.jetbrains.anko.db.select
@@ -80,7 +80,7 @@ class Db(val dbHelper: DbHelper = DbHelper.instance,
 
     private fun saveSections(articleId: Int, sections: Collection<SectionDomain>?) = dbHelper.use {
         if (sections != null) {
-            delete(SectionTable.TABLE_NAME, "${SectionTable.ARTICLE_ID} = ?", arrayOf(articleId.toString()))
+            delete(SectionTable.TABLE_NAME, "${SectionTable.ARTICLE_ID} = ${articleId.toString()}", null)
             val sectionsDb = dataMapper.sectionsFromDomainToDb(articleId, sections)
             sectionsDb.forEach { replace(SectionTable.TABLE_NAME, *it.map.toVarargArray()) }
         }

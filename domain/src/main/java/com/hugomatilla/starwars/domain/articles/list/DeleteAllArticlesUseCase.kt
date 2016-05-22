@@ -1,8 +1,8 @@
-package com.hugomatilla.starwars.domain.articles.list
+package com.hugomatilla.starwars.domain2.articles.list
 
-import com.hugomatilla.starwars.domain.articles.IArticlesListRepository
-import com.hugomatilla.starwars.domain.exception.DefaultError
-import com.hugomatilla.starwars.domain.exception.ErrorBundle
+import com.hugomatilla.starwars.domain2.articles.IArticlesListRepository
+import com.hugomatilla.starwars.domain2.exception.DefaultError
+import com.hugomatilla.starwars.domain2.exception.ErrorBundle
 
 /**
  * Created by hugomatilla on 11/04/16.
@@ -27,6 +27,6 @@ interface IDeleteAllArticlesUseCase {
         fun onError(error: ErrorBundle)
     }
 
-    fun execute(callback: IDeleteAllArticlesUseCase.Callback)
+    fun execute(callback: Callback)
 
 }

@@ -1,7 +1,7 @@
 package com.hugomatilla.starwars.data.cloud.model
 
-import com.hugomatilla.starwars.domain.model.ArticleDomain
-import com.hugomatilla.starwars.domain.model.SectionDomain
+import com.hugomatilla.starwars.domain2.model.ArticleDomain
+import com.hugomatilla.starwars.domain2.model.SectionDomain
 
 /**
  * Created by hugomatilla on 27/02/16.

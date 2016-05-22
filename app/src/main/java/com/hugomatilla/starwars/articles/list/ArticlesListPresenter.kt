@@ -3,12 +3,12 @@ package com.hugomatilla.starwars.articles.list
 import com.hugomatilla.starwars.base.Presenter
 import com.hugomatilla.starwars.data.ArticlesListRepository
 import com.hugomatilla.starwars.data.isEmptyOrNull
-import com.hugomatilla.starwars.domain.articles.list.DeleteAllArticlesUseCase
-import com.hugomatilla.starwars.domain.articles.list.GetArticlesListUseCase
-import com.hugomatilla.starwars.domain.articles.list.IDeleteAllArticlesUseCase
-import com.hugomatilla.starwars.domain.articles.list.IGetArticlesListUseCase
-import com.hugomatilla.starwars.domain.exception.ErrorBundle
-import com.hugomatilla.starwars.domain.model.ArticleDomain
+import com.hugomatilla.starwars.domain2.articles.list.DeleteAllArticlesUseCase
+import com.hugomatilla.starwars.domain2.articles.list.GetArticlesListUseCase
+import com.hugomatilla.starwars.domain2.articles.list.IDeleteAllArticlesUseCase
+import com.hugomatilla.starwars.domain2.articles.list.IGetArticlesListUseCase
+import com.hugomatilla.starwars.domain2.exception.ErrorBundle
+import com.hugomatilla.starwars.domain2.model.ArticleDomain
 import org.jetbrains.anko.async
 import org.jetbrains.anko.uiThread
 
