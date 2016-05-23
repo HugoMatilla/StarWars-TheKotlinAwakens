@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.hugomatilla.starwars.R
 import com.hugomatilla.starwars.base.ctx
-import com.hugomatilla.starwars.domain2.model.SectionDomain
+import com.hugomatilla.starwars.domain.model.SectionDomain
 import kotlinx.android.synthetic.main.article_detail_item.view.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info

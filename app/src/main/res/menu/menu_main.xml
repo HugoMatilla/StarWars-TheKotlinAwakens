@@ -4,5 +4,5 @@
     <item
         android:id="@+id/action_delete_database"
         android:orderInCategory="1"
-        android:title="Delete Database"/>
+        android:title="Refresh"/>
 </menu>

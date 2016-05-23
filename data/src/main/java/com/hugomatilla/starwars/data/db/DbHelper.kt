@@ -20,9 +20,7 @@ class DbHelper(ctx: Context, name: String = DbHelper.DB_NAME, version: Int = DbH
         lateinit var instance: DbHelper
             private set
 
-        //Todo What if someone call init several times
         fun init(ctx: Context) {
-            // if (instance == null)
             instance = DbHelper(ctx)
         }
 

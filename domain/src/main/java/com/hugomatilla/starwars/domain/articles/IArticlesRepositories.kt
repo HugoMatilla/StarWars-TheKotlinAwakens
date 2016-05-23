@@ -1,6 +1,6 @@
-package com.hugomatilla.starwars.domain2.articles
+package com.hugomatilla.starwars.domain.articles
 
-import com.hugomatilla.starwars.domain2.model.ArticleDomain
+import com.hugomatilla.starwars.domain.model.ArticleDomain
 
 /**
  * Created by hugomatilla on 27/02/16.
@@ -9,7 +9,7 @@ import com.hugomatilla.starwars.domain2.model.ArticleDomain
 interface IArticlesListRepository {
 
     fun getArticleList(): Collection<ArticleDomain>?
-    fun deleteDatabase()
+    fun deleteAll()
 }
 
 interface IArticleDetailRepository {

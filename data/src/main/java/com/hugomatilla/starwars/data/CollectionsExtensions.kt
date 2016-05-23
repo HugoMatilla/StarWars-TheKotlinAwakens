@@ -7,4 +7,4 @@ package com.hugomatilla.starwars.data
 fun <K, V : Any> MutableMap<K, V?>.toVarargArray(): Array<out Pair<K, V>> =
         map({ Pair(it.key, it.value!!) }).toTypedArray()
 
-fun Collection<Any>?.isEmptyOrNull(): Boolean = this == null || this.isEmpty()
+fun Collection<Any>?.isNullOrEmpty(): Boolean = this == null || this.isEmpty()

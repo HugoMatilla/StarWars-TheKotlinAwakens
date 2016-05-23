@@ -2,8 +2,8 @@ package com.hugomatilla.starwars.data
 
 import com.hugomatilla.starwars.data.cloud.Cloud
 import com.hugomatilla.starwars.data.db.Db
-import com.hugomatilla.starwars.domain2.articles.IArticleDetailRepository
-import com.hugomatilla.starwars.domain2.model.ArticleDomain
+import com.hugomatilla.starwars.domain.articles.IArticleDetailRepository
+import com.hugomatilla.starwars.domain.model.ArticleDomain
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.error
 
@@ -11,8 +11,9 @@ import org.jetbrains.anko.error
  * Created by hugomatilla on 27/02/16.
  */
 
-object ArticlesDetailRepository : IArticleDetailRepository, AnkoLogger {
+class ArticlesDetailRepository : IArticleDetailRepository, AnkoLogger {
 
+    // Todo, inject these dependencies
     val DB = Db()
     val CLOUD = Cloud()
 
@@ -23,7 +24,7 @@ object ArticlesDetailRepository : IArticleDetailRepository, AnkoLogger {
                 val articleFromTheCloud = CLOUD.getArticleDetailById(id)
                 DB.saveArticle(articleFromTheCloud)
                 return articleFromTheCloud
-            } else if (articleFromDb.sections.isEmptyOrNull()) {
+            } else if (articleFromDb.sections.isNullOrEmpty()) {
                 val sectionsFromTheCloud = CLOUD.getArticleSections(id)
                 articleFromDb.sections = sectionsFromTheCloud
                 DB.saveArticle(articleFromDb)

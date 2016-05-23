@@ -1,4 +1,4 @@
-package com.hugomatilla.starwars.domain2.model
+package com.hugomatilla.starwars.domain.model
 
 /**
  * Created by hugomatilla on 27/02/16.

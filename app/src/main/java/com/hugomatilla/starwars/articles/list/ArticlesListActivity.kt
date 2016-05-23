@@ -7,7 +7,7 @@ import android.support.v7.widget.Toolbar
 import android.view.View
 import com.hugomatilla.starwars.R
 import com.hugomatilla.starwars.articles.detail.ArticleDetailActivity
-import com.hugomatilla.starwars.domain2.model.ArticleDomain
+import com.hugomatilla.starwars.domain.model.ArticleDomain
 import com.hugomatilla.starwars.widgets.ToolbarManager
 import kotlinx.android.synthetic.main.articles_list_activity.*
 import org.jetbrains.anko.alert
@@ -40,6 +40,11 @@ class ArticlesListActivity : AppCompatActivity(), ArticlesListPresenter.View, To
 
     private fun inflateArticles(articles: List<ArticleDomain>) {
         listView.adapter = ArticlesListAdapter(articles, { navigateToDetail(it) })
+    }
+
+    override fun clearList() {
+        (listView.adapter as ArticlesListAdapter).articlesList = emptyList()
+        listView.adapter.notifyDataSetChanged()
     }
 
     private fun navigateToDetail(it: ArticleDomain) {

@@ -2,12 +2,12 @@ package com.hugomatilla.starwars.articles.detail
 
 import com.hugomatilla.starwars.base.Presenter
 import com.hugomatilla.starwars.data.ArticlesDetailRepository
-import com.hugomatilla.starwars.data.isEmptyOrNull
-import com.hugomatilla.starwars.domain2.articles.detail.GetArticleDetailUseCase
-import com.hugomatilla.starwars.domain2.articles.detail.IGetArticleDetailUseCase
-import com.hugomatilla.starwars.domain2.exception.ErrorBundle
-import com.hugomatilla.starwars.domain2.model.ArticleDomain
-import com.hugomatilla.starwars.domain2.model.SectionDomain
+import com.hugomatilla.starwars.data.isNullOrEmpty
+import com.hugomatilla.starwars.domain.articles.detail.GetArticleDetailUseCase
+import com.hugomatilla.starwars.domain.articles.detail.IGetArticleDetailUseCase
+import com.hugomatilla.starwars.domain.exception.ErrorBundle
+import com.hugomatilla.starwars.domain.model.ArticleDomain
+import com.hugomatilla.starwars.domain.model.SectionDomain
 import org.jetbrains.anko.async
 import org.jetbrains.anko.uiThread
 
@@ -18,11 +18,11 @@ import org.jetbrains.anko.uiThread
 class ArticleDetailPresenter(view: View) : Presenter<ArticleDetailPresenter.View>(view), IArticleDetailPresenter {
     override fun getDetailArticle(id: Int) {
         async() {
-            GetArticleDetailUseCase(id, ArticlesDetailRepository)
+            GetArticleDetailUseCase(id, ArticlesDetailRepository())
                     .execute(object : IGetArticleDetailUseCase.Callback {
                         override fun onArticleLoaded(article: ArticleDomain?) {
                             uiThread {
-                                if (article == null || article.sections.isEmptyOrNull()) view.showEmptyCase()
+                                if (article == null || article.sections.isNullOrEmpty()) view.showEmptyCase()
                                 else view.showArticle(article.sections!!)
                                 view.hideLoading()
                             }

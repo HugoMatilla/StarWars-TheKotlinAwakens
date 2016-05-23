@@ -7,7 +7,7 @@ import android.util.DisplayMetrics
  * Created by hugomatilla on 11/04/16.
  */
 
-// in Anko
+// Already in Anko
 val Activity.metrics: DisplayMetrics
     get() = getDeviceMetrics(this)
 

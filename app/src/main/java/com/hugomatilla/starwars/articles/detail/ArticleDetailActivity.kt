@@ -6,7 +6,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.Toolbar
 import android.view.View
 import com.hugomatilla.starwars.R
-import com.hugomatilla.starwars.domain2.model.SectionDomain
+import com.hugomatilla.starwars.domain.model.SectionDomain
 import com.hugomatilla.starwars.widgets.ToolbarManager
 import kotlinx.android.synthetic.main.article_detail_activity.*
 import org.jetbrains.anko.alert
@@ -16,7 +16,7 @@ import org.jetbrains.anko.toast
 class ArticleDetailActivity : Activity(), ArticleDetailPresenter.View, ToolbarManager {
 
     override val toolbar: Toolbar by lazy { find<Toolbar>(R.id.toolbar) }
-
+    val headerImage: String by lazy { intent.getStringExtra(HEADER_IMAGE) }
 
     companion object {
         val ID = "ArticleDetailActivity.ID"
@@ -24,7 +24,7 @@ class ArticleDetailActivity : Activity(), ArticleDetailPresenter.View, ToolbarMa
         val HEADER_TITLE = "ArticleDetailActivity.HEADER_TITLE"
     }
 
-    val headerImage: String by lazy { intent.getStringExtra(HEADER_IMAGE) }
+    // Todo: add dependency injection or add it in the parameter
     private val presenter: ArticleDetailPresenter = ArticleDetailPresenter(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {

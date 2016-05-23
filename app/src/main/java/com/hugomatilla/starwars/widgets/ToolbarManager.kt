@@ -32,7 +32,7 @@ interface ToolbarManager {
     }
 
     private fun deleteDatabase(presenter: ArticlesListPresenter) {
-        App.instance.toast("Deleting Database")
+//        App.instance.toast("Refreshing")
         presenter.deleteDatabase()
 
     }

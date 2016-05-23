@@ -2,8 +2,8 @@ package com.hugomatilla.starwars.data.cloud
 
 import com.hugomatilla.starwars.data.IReadableDataSource
 import com.hugomatilla.starwars.data.db.Db
-import com.hugomatilla.starwars.domain2.model.ArticleDomain
-import com.hugomatilla.starwars.domain2.model.SectionDomain
+import com.hugomatilla.starwars.domain.model.ArticleDomain
+import com.hugomatilla.starwars.domain.model.SectionDomain
 
 /**
  * Created by hugomatilla on 27/02/16.

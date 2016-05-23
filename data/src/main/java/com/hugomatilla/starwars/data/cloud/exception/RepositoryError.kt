@@ -1,6 +1,6 @@
 package com.hugomatilla.starwars.data.cloud.exception
 
-import com.hugomatilla.starwars.domain2.exception.ErrorBundle
+import com.hugomatilla.starwars.domain.exception.ErrorBundle
 
 /**
  * Created by hugomatilla on 28/02/16.

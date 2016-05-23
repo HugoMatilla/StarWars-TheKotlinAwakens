@@ -7,14 +7,14 @@ import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.hugomatilla.starwars.R
 import com.hugomatilla.starwars.base.ctx
-import com.hugomatilla.starwars.domain2.model.ArticleDomain
+import com.hugomatilla.starwars.domain.model.ArticleDomain
 import kotlinx.android.synthetic.main.articles_list_item.view.*
 
 /**
  * Created by hugomatilla on 28/02/16.
  */
 
-class ArticlesListAdapter(val articlesList: Collection<ArticleDomain>, val itemClick: (ArticleDomain) -> Unit) : RecyclerView.Adapter<ArticlesListAdapter.ViewHolder>() {
+class ArticlesListAdapter(var articlesList: Collection<ArticleDomain>, val itemClick: (ArticleDomain) -> Unit) : RecyclerView.Adapter<ArticlesListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.ctx).inflate(R.layout.articles_list_item, parent, false)

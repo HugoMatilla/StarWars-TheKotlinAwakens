@@ -1,6 +1,4 @@
-package com.hugomatilla.starwars.domain2.base
-
-import com.hugomatilla.starwars.domain2.exception.ErrorBundle
+package com.hugomatilla.starwars.domain.base
 
 /**
  * Created by hugomatilla on 27/02/16.
@@ -10,7 +8,8 @@ interface Command<R, T> {
     fun execute(callback: T)
 }
 
-//interface Command2<R> {
+// Attempt to have a Command interface that run in async.
+//interface Command<R> {
 //    fun execute(f: () -> R, callback: DefaultCallback<R>) {
 //        async() {
 //            try {
@@ -25,9 +24,9 @@ interface Command<R, T> {
 //            }
 //        }
 //    }
-//}e
-
-interface DefaultCallback<R> {
-    fun onSuccess(result: R)
-    fun onError(error: ErrorBundle)
-}
+//}
+//
+//interface DefaultCallback<R> {
+//    fun onSuccess(result: R)
+//    fun onError(error: ErrorBundle)
+//}

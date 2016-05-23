@@ -3,8 +3,8 @@ package com.hugomatilla.starwars.data.db
 import com.hugomatilla.starwars.data.IReadableDataSource
 import com.hugomatilla.starwars.data.db.model.*
 import com.hugomatilla.starwars.data.toVarargArray
-import com.hugomatilla.starwars.domain2.model.ArticleDomain
-import com.hugomatilla.starwars.domain2.model.SectionDomain
+import com.hugomatilla.starwars.domain.model.ArticleDomain
+import com.hugomatilla.starwars.domain.model.SectionDomain
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.db.replace
 import org.jetbrains.anko.db.select
