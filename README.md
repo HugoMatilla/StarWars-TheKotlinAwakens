@@ -5,6 +5,8 @@ Based on Fernando Cejas' [Post](http://fernandocejas.com/2014/09/03/architecting
 
 Suggestions and comments are more than welcome :smiley:
 
+![demo](./art/swkotlin.gif)
+
 # Clean Architecture
 
 Uncle Bob's [Post](http://blog.8thlight.com/uncle-bob/2012/08/13/the-clean-architecture.html)
