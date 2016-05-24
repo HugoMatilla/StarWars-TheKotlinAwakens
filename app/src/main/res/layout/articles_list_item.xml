@@ -1,20 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="200dp">
     <ImageView android:id="@+id/articleListImageView"
                android:layout_width="match_parent"
                android:layout_height="200dp"
-               android:contentDescription="@string/app_name"
-               android:scaleType="centerCrop"/>
+               android:contentDescription="@string/header_image"
+               android:scaleType="centerCrop"
+               android:transitionName="@string/transition_name_header_image"
+               tools:targetApi="lollipop"/>
 
     <TextView android:id="@+id/articleListNameView"
-              style="@style/TextAppearance.AppCompat.Display1"
+              style="@style/TextAppearance.AppCompat.Body1"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:layout_alignParentEnd="true"
               android:layout_alignParentRight="true"
               android:layout_alignTop="@+id/articleListImageView"
+              android:shadowColor="@android:color/black"
+              android:shadowDx="0"
+              android:shadowDy="0"
+              android:shadowRadius="10"
               android:textColor="@color/colorAccent"/>
 
 </RelativeLayout>

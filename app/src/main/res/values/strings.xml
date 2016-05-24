@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">StarWars</string>
+    <string name="header_image">Header Image</string>
+    <string name="transition_name_header_image">Header Image</string>
 </resources>

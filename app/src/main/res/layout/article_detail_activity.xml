@@ -16,12 +16,20 @@
         app:titleTextColor="@color/colorAccent">
     </android.support.v7.widget.Toolbar>
 
+    <com.hugomatilla.starwars.articles.detail.DetailHeaderView
+        android:id="@+id/header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:transitionName="@string/transition_name_header_image"
+        tools:targetApi="lollipop"/>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/sectionsListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/toolbar"
-        />
+        android:layout_below="@+id/header"
+    />
 
     <ProgressBar
         android:id="@+id/progressBar"

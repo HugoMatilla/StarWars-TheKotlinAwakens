@@ -1,6 +1,7 @@
 ![badge](https://img.shields.io/badge/version-1.0.0-green.svg)
 
 Android app in Kotlin implementing Clean Architecture with data from The Wookieepedia.
+
 Based on Fernando Cejas' [Post](http://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/) and	 Antonio Leiva's [Book](https://github.com/antoniolg/Kotlin-for-Android-Developers) 
 
 Suggestions and comments are more than welcome :smiley:
