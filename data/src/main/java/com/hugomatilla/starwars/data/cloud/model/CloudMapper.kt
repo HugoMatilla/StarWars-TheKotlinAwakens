@@ -3,13 +3,21 @@ package com.hugomatilla.starwars.data.cloud.model
 import com.hugomatilla.starwars.domain.model.ArticleDomain
 import com.hugomatilla.starwars.domain.model.SectionDomain
 
+fun String?.toFullSize(): String? {
+    if (this != null) {
+        val fullSize = this.split("/revision")
+        return fullSize[0]
+    } else
+        return null
+}
+
 /**
  * Created by hugomatilla on 27/02/16.
  */
 
 class CloudMapper {
     companion object {
-        val PLACE_HOLDER = "https://s-media-cache-ak0.pinimg.com/236x/8e/8c/06/8e8c0619aa7db68b0fd9fbb53f2be96b.jpg"
+        val PLACE_HOLDER = "http://assets2.ignimgs.com/2015/08/06/darth-vader-crossed-arms-1280jpg-88461e1280wjpg-67c0c2_1280w.jpg"
     }
 
     fun articleListToDomain(articleList: ArticlesListCloud): List<ArticleDomain> {
@@ -38,7 +46,7 @@ class CloudMapper {
                     it.title,
                     it.level,
                     it.content.map { it.text }.joinToString("\n"),
-                    it.images.firstOrNull()?.src,
+                    it.images.firstOrNull()?.src.toFullSize(),
                     it.images.firstOrNull()?.caption
             )
         }

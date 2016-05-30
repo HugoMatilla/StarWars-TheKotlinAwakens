@@ -7,11 +7,13 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.Toolbar
 import android.view.View
+import android.view.ViewGroup
+import com.bumptech.glide.Glide
 import com.hugomatilla.starwars.R
 import com.hugomatilla.starwars.base.toResourceString
+import com.hugomatilla.starwars.data.cloud.model.toFullSize
 import com.hugomatilla.starwars.domain.model.SectionDomain
 import com.hugomatilla.starwars.widgets.ToolbarManager
 import kotlinx.android.synthetic.main.article_detail_activity.*
@@ -38,10 +40,6 @@ class ArticleDetailActivity : Activity(), ArticleDetailPresenter.View, ToolbarMa
             return callingIntent;
         }
 
-        //        private fun getTransition(activity: Activity, view: View): ActivityOptionsCompat {
-//            return ActivityOptionsCompat.makeSceneTransitionAnimation(activity, android.support.v4.util.Pair(view, "toolbar"))
-//        }
-
         @TargetApi(Build.VERSION_CODES.LOLLIPOP)
         private fun getTransition(activity: Activity, view: View): ActivityOptions {
             return ActivityOptions.makeSceneTransitionAnimation(activity, android.util.Pair(view, TRANSITION_NAME_HEADER_TITLE))
@@ -62,17 +60,36 @@ class ArticleDetailActivity : Activity(), ArticleDetailPresenter.View, ToolbarMa
         super.onCreate(savedInstanceState)
         setContentView(R.layout.article_detail_activity)
         toolbar.title = intent.getStringExtra(HEADER_TITLE)
+
         enableHomeAsUp { onBackPressed() }
-        sectionsListView.layoutManager = LinearLayoutManager(this)
         val id = intent.getIntExtra(ID, 0)
         presenter.getDetailArticle(id)
-        header.withImage(headerImage)
+        Glide.with(this).load(headerImage.toFullSize()).into(header)
+//        Glide.with(this).load(headerImage).into(toolbar_image)
+        setUpToolbarImage()
+    }
+
+    private fun setUpToolbarImage() {
+//        Glide.with(this).load(headerImage).asBitmap().centerCrop().into(object : BitmapImageViewTarget(toolbar_image) {
+//            override fun setResource(resource: Bitmap) {
+//                val circularBitmapDrawable = RoundedBitmapDrawableFactory.create(App.instance.resources, resource);
+//                circularBitmapDrawable.isCircular = true;
+//                toolbar_image.setImageDrawable(circularBitmapDrawable);
+//            }
+//        });
     }
 
     override fun showArticle(sections: Collection<SectionDomain>) {
-        val sectionsWithHeader = addArticleHeaderInfo(sections)
-        sectionsListView.adapter = ArticleDetailAdapter(sectionsWithHeader)
+        sections.map {
+            val sectionView = SectionView(this);
+            sectionView.withSection(it)
+            sectionView.layoutParams = (ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            if (sectionView.parent != null)
+                (sectionView.parent as ViewGroup).removeView(sectionView)
+            sectionsListView.addView(sectionView);
+        }
     }
+
 
     override fun showError(message: String) {
         alert(message) { positiveButton("OK") { } }.show()

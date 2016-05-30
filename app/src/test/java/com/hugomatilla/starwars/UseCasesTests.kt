@@ -12,14 +12,14 @@ class UseCasesTests {
 
     @Test
     fun getArticleListUseCase() {
-        val repository = ArticlesListRepository
+        val repository = ArticlesListRepository()
         val articles = repository.getArticleList()
         assertEquals(articles?.elementAt(0)!!.id, 4021)
     }
 
     @Test
     fun getArticleDetailUseCase() {
-        val repository = ArticlesDetailRepository
+        val repository = ArticlesDetailRepository()
         val article = repository.getArticleDetail(472920)
         assertEquals(article?.sections!!.elementAt(0).title, "Kylo Ren")
         assertEquals(article?.sections!!.elementAt(0).text!!.substring(1951), " completed.")

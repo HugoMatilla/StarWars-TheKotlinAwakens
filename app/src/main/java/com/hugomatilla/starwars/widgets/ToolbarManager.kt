@@ -32,13 +32,18 @@ interface ToolbarManager {
     }
 
     private fun deleteDatabase(presenter: ArticlesListPresenter) {
-//        App.instance.toast("Refreshing")
         presenter.deleteDatabase()
+    }
+
+    fun setLogo(logoUrl: String) {
+
+//        Glide.with(App.instance).load(logoUrl).into(toolbar.logo)
 
     }
 
     fun enableHomeAsUp(up: () -> Unit) {
         toolbar.navigationIcon = createUpDrawable()
+
         toolbar.setNavigationOnClickListener { up() }
     }
 
