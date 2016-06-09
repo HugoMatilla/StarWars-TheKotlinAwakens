@@ -4,6 +4,8 @@ Android app in Kotlin implementing Clean Architecture with data from The Wookiee
 
 Based on Fernando Cejas' [Post](http://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/) and	 Antonio Leiva's [Book](https://github.com/antoniolg/Kotlin-for-Android-Developers) 
 
+I am changing and trying to improve some aspects of the app from architecture to UI, to have a consistent view of it, check the releases.
+
 Suggestions and comments are more than welcome :smiley:
 
 ![demo](./art/swkotlin.gif)
