@@ -1,5 +1,6 @@
 package com.hugomatilla.starwars.articles.list
 
+import android.os.Build
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
@@ -27,6 +28,7 @@ class ArticlesListActivity : AppCompatActivity(), ArticlesListPresenter.View, To
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setTheme(R.style.AppTheme)
         setContentView(R.layout.articles_list_activity)
         listView.layoutManager = GridLayoutManager(this, 2)
         initToolbarSettings(presenter)
@@ -63,10 +65,12 @@ class ArticlesListActivity : AppCompatActivity(), ArticlesListPresenter.View, To
 
     override fun showLoading() {
         progressBar.visibility = View.VISIBLE
+        listView.setBackgroundResource(R.drawable.background_splash)
     }
 
     override fun hideLoading() {
         progressBar.visibility = View.INVISIBLE
+        listView.setBackgroundResource(0)
     }
 
     override fun showEmptyCase() {
@@ -74,4 +78,9 @@ class ArticlesListActivity : AppCompatActivity(), ArticlesListPresenter.View, To
 
     }
 
+    inline fun supportsLollipop(f: () -> Unit) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            f()
+        }
+    }
 }
